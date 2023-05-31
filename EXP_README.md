@@ -12,4 +12,6 @@ Experiment documentations
 
 | Name |  Architecture  | Data | Text Embedding | Runtime etc. | Additional Notes | 
 | :---:   | :---: | :---: | :---: | :---: | :---: |
-| `Exp0` | 0 | `sepsis_removed_0.pkl` | Clinical BERT | - | - |
+| `Exp00`| 0.0 | tba | tba |  |  |
+| `Exp0` | 0 | `sepsis_removed_0.pkl` | __Clinical BERT__ | - | - |
+| `Exp1` | 0 | tba | __GloVe__ | - | - |
