@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# genenrate sepsis_removed_0.pkl
+
 # import nltk
 # nltk.download('stopwords')
 import pandas as pd
@@ -29,6 +31,8 @@ sepsis_setence_count = 0
 
 # clinical text preprocessing
 def preprocess_text(text, nlp=nlp):
+    
+    ''' only removes sepsis/septic sentences (sentences extracted by scispacy), no further text cleaning for contextual Clinical BERT input'''
     
     # count num sentences and sepsis/septic sentences
     global sentence_count
