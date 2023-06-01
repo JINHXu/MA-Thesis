@@ -20,10 +20,20 @@ import spacy
 # from nltk.stem import SnowballStemmer
 # from nltk.stem import WordNetLemmatizer
 
+# load scispacy model
 nlp = spacy.load("en_core_sci_md")
+
+# count number of sepsis mentions and sepsis sentences
+sentence_count = 0
+sepsis_setence_count = 0
 
 # clinical text preprocessing
 def preprocess_text(text, nlp=nlp):
+    
+    # count num sentences and sepsis/septic sentences
+    global sentence_count
+    global sepsis_setence_count
+    
     text = str(text)
     # # case normalization
     # text = text.lower().split()
@@ -37,13 +47,18 @@ def preprocess_text(text, nlp=nlp):
     
     clean_sentences = []
     for sentence in sentences:
-        if 'septic' in sentence or 'sepsis' in sentence:
+        # count number of sentences
+        sentence_count += 1
+        lowered_sent = sentence.lower()
+        if 'septic' in lowered_sent or 'sepsis' in lowered_sent:
+            sepsis_setence_count += 1
             continue
         else:
+            # append the org sentence, do not lowercase
             clean_sentences.append(sentence)
     
     text = ' '.join(sentences)
-
+    
     # # special words and chars
     # text = re.sub(r"what's", "what is ", text)
     # text = re.sub(r"don't", "do not ", text)
@@ -197,3 +212,6 @@ valid_ind = np.array(valid_ind)
 # dump to pkl
 pickle.dump([data, oc, train_ind, valid_ind, test_ind], open(
     'sepsis_removed_0.pkl', 'wb'))
+
+print(f'Number of sentences: {sentence_count}')
+print(f'Number of septic/sepsis sentences: {sepsis_setence_count}')
