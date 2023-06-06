@@ -1,7 +1,8 @@
 # MA-Thesis
 
+_Ongoing experiments: documentations, scripts and etc._
 
-Problems with data in research module:
+__Problems with data handling in research module:__
 
 - involuntary truncation at 512
 - text preprocessing
